@@ -4,7 +4,7 @@ Cursor IDE extension that automatically re-enables the "OpenAI API Key" toggle w
 
 ## Problem
 
-Cursor has a [known bug](https://forum.cursor.com/t/openai-api-key-toggle-keeps-turning-off/17conveys) where the "Override OpenAI Base URL" / "OpenAI API Key" toggle keeps turning off by itself. There is no official fix yet.
+Cursor has a [known bug](https://forum.cursor.com/t/openai-api-key-randomly-toggling-off-in-settings/24724) where the "Override OpenAI Base URL" / "OpenAI API Key" toggle keeps turning off by itself. There is no official fix yet.
 
 ## How it works
 
