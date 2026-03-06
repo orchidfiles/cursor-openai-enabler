@@ -16,6 +16,14 @@ Detection runs via:
 - **File watcher** on `state.vscdb` (reacts in ~1 second)
 - **Polling fallback** every 30 seconds
 
+### Toggle button
+
+A status bar button (`OpenAI Key`) lets you pause and resume the extension without disabling it. This is useful when you want to switch to a different model temporarily.
+
+- Click the button or use `Ctrl+Shift+P` → "Cursor OpenAI Enabler: Toggle On/Off"
+- When paused, all monitoring stops completely (no polling, no file watching)
+- The state persists across Cursor restarts
+
 Works on **Windows, macOS, and Linux**.
 
 ## Install
