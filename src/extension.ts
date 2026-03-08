@@ -19,6 +19,7 @@ let sqlite3Path: string | undefined;
 let statusBarItem: vscode.StatusBarItem;
 let isEnabled = true;
 let watcher: vscode.FileSystemWatcher | undefined;
+let watcherSubscription: vscode.Disposable | undefined;
 let checkAndFix: (() => Promise<void>) | undefined;
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -103,12 +104,13 @@ function startMonitoring(
     new vscode.RelativePattern(vscode.Uri.file(globalStorageDir), "state.vscdb")
   );
   const fn = checkAndFix;
-  watcher.onDidChange(() => {
+  watcherSubscription = watcher.onDidChange(() => {
     if (!isEnabled) return;
     if (debounceTimer) clearTimeout(debounceTimer);
     debounceTimer = setTimeout(fn, 1000);
   });
   context.subscriptions.push(watcher);
+  context.subscriptions.push(watcherSubscription);
 
   // Polling fallback every 30s
   pollInterval = setInterval(() => {
@@ -129,6 +131,10 @@ function stopMonitoring() {
     clearTimeout(debounceTimer);
     debounceTimer = undefined;
   }
+  if (watcherSubscription) {
+    watcherSubscription.dispose();
+    watcherSubscription = undefined;
+  }
   if (watcher) {
     watcher.dispose();
     watcher = undefined;
@@ -136,6 +142,7 @@ function stopMonitoring() {
 }
 
 export function deactivate() {
+  isEnabled = false;
   stopMonitoring();
   if (statusBarItem) statusBarItem.dispose();
 }
