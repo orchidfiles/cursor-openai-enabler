@@ -4,12 +4,29 @@
 	"description": "Automatically re-enables the OpenAI API Key toggle in Cursor when it randomly resets",
 	"version": "0.0.4",
 	"publisher": "ttempaa",
-	"engines": {
-		"vscode": "^1.85.0"
+	"author": "ttempaa",
+	"license": "MIT",
+	"homepage": "https://github.com/ttempaa/cursor-openai-enabler#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ttempaa/cursor-openai-enabler"
 	},
+	"bugs": {
+		"url": "https://github.com/ttempaa/cursor-openai-enabler/issues"
+	},
+	"keywords": [
+		"cursor",
+		"openai",
+		"api-key",
+		"automation",
+		"fix"
+	],
 	"categories": [
 		"Other"
 	],
+	"engines": {
+		"vscode": "^1.85.0"
+	},
 	"extensionKind": [
 		"ui"
 	],
@@ -30,14 +47,10 @@
 		"typecheck": "tsc --noEmit",
 		"lint": "biome check .",
 		"lint:fix": "biome check --write .",
-		"package": "vsce package --allow-missing-repository"
+		"package": "vsce package"
 	},
 	"dependencies": {
 		"sql.js": "^1.12.0"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ttempaa/cursor-openai-enabler"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.6",
